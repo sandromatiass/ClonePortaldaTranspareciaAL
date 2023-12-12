@@ -1,43 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-interface Server {
-  id: number;
+interface ServidorInativo {
+  proventos: string;
   nome: string;
-  salario: number;
+  ano: number;
+  cpf: string;
+  funcionario_id: number;
+  mes: number;
+  total: string;
+  vinculo: string;
+  id: number | null;
+  numero_ordem: number;
 }
 
 interface ServidoresInativosProps {
-  searchQuery: string;
-  limit: number;
+  servidoresInativos: ServidorInativo[];
 }
 
-const ServidoresInativos: React.FC<ServidoresInativosProps> = ({ searchQuery, limit }) => {
-  const [servidoresInativos, setServidoresInativos] = useState<Server[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/pessoal/json-servidores/?status=inativo&nome=${searchQuery}&limit=${limit}`);
-        setServidoresInativos(response.data);
-      } catch (error) {
-        console.error('Erro na requisição:', error);
-      }
-    };
-
-    fetchData();
-  }, [searchQuery, limit]);
-
+const ServidoresInativos: React.FC<ServidoresInativosProps> = ({ servidoresInativos }) => {
   return (
     <div>
-      <h2>Servidores Inativos</h2>
-      <ul>
-        {servidoresInativos.map((server) => (
-          <li key={server.id}>
-            {server.nome} - Salário: {server.salario}
-          </li>
-        ))}
-      </ul>
+      <h2>Listagem de Servidores Inativos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Vínculo</th>
+            <th>Total (R$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {servidoresInativos.map((servidor) => (
+            <tr key={servidor.funcionario_id}>
+              <td>{servidor.cpf}</td>
+              <td>{servidor.nome}</td>
+              <td>{servidor.vinculo}</td>
+              <td>{servidor.total}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

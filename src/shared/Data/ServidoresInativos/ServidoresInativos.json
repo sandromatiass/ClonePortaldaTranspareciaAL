@@ -1,0 +1,154 @@
+{
+  "total": 29819,
+  "titulo": "Servidores Inativos",
+  "detalhe": {
+    "total__sum": "104.202.698,38",
+    "proventos__sum": "114.615.855,20"
+  },
+  "servidoresInativos": [
+    {
+      "proventos": "3.251,17",
+      "nome": "ABAETE BERTOLDO DE VIVEIROS",
+      "ano": 2015,
+      "cpf": "###.326.6##-##",
+      "funcionario_id": 63219,
+      "mes": 9,
+      "total": "3.251,17",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 8853
+    },
+    {
+      "proventos": "6.410,34",
+      "nome": "ABDENIO DE FRANCA JUCA",
+      "ano": 2015,
+      "cpf": "###.521.8##-##",
+      "funcionario_id": 64796,
+      "mes": 9,
+      "total": "5.481,85",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 73451
+    },
+    {
+      "proventos": "911,19",
+      "nome": "ABDIAS ALVES DE SOUZA",
+      "ano": 2015,
+      "cpf": "###.096.8##-##",
+      "funcionario_id": 5,
+      "mes": 9,
+      "total": "911,19",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 28973
+    },
+    {
+      "proventos": "3.323,59",
+      "nome": "ABDIAS FLORINDO JUCA FILHO",
+      "ano": 2015,
+      "cpf": "###.019.6##-##",
+      "funcionario_id": 74828,
+      "mes": 9,
+      "total": "3.179,86",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 51568
+    },
+    {
+      "proventos": "925,89",
+      "nome": "ABDIAS JOAO DA SILVA",
+      "ano": 2015,
+      "cpf": "###.237.0##-##",
+      "funcionario_id": 59368,
+      "mes": 9,
+      "total": "925,89",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 30164
+    },
+    {
+      "proventos": "850,88",
+      "nome": "ABDIAS JOSE DE SANTANA",
+      "ano": 2015,
+      "cpf": "###.680.7##-##",
+      "funcionario_id": 74615,
+      "mes": 9,
+      "total": "850,88",
+      "vinculo": "Pensionista",
+      "id": null,
+      "numero_ordem": 128119
+    },
+    {
+      "proventos": "788,00",
+      "nome": "ABDIAS SERAFIM DE OLIVEIRA",
+      "ano": 2015,
+      "cpf": "###.009.6##-##",
+      "funcionario_id": 72483,
+      "mes": 9,
+      "total": "788,00",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 33651
+    },
+    {
+      "proventos": "4.553,60",
+      "nome": "ABDIZIA MARIA ALVES BARROS",
+      "ano": 2015,
+      "cpf": "###.202.3##-##",
+      "funcionario_id": 69621,
+      "mes": 9,
+      "total": "4.165,17",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 9503
+    },
+    {
+      "proventos": "4.495,91",
+      "nome": "ABEL CORDEIRO DE SOUZA",
+      "ano": 2015,
+      "cpf": "###.013.8##-##",
+      "funcionario_id": 53430,
+      "mes": 9,
+      "total": "4.444,32",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 46805
+    },
+    {
+      "proventos": "788,00",
+      "nome": "ABEL GUIMARAES DA SILVA",
+      "ano": 2015,
+      "cpf": "###.965.4##-##",
+      "funcionario_id": 56584,
+      "mes": 9,
+      "total": "788,00",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 28877
+    },
+    {
+      "proventos": "788,00",
+      "nome": "ABELARDO ALVES MAGALHAES",
+      "ano": 2015,
+      "cpf": "###.406.4##-##",
+      "funcionario_id": 52564,
+      "mes": 9,
+      "total": "788,00",
+      "vinculo": "Aposentado",
+      "id": null,
+      "numero_ordem": 42061
+    },
+    {
+      "proventos": "833,57",
+      "nome": "ABELARDO ANTUNES DE ATAIDE",
+      "ano": 2015,
+      "cpf": "###.425.8##-##",
+      "funcionario_id": 71349,
+      "mes": 9,
+      "total": "833,57",
+      "vinculo": "Pensionista",
+      "id": null,
+      "numero_ordem": 123054
+    }
+  ]
+}

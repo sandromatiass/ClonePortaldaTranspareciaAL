@@ -1,19 +1,17 @@
 import CHeader from "./shared/Components/CHeader/CHeader";
 import CMain from "./shared/Components/CMain/CMain";
 import GlobalStyles from "./shared/Styles";
+import CFooter from "./shared/Components/CFooter/CFooter";
 
 function App() {
 
-  const handleSearch = (query: string) => {
-    console.log('Pesquisando por:', query);
-  };
-
   return (
-    <div>
+    <>
       <GlobalStyles />
       <CHeader />
-      <CMain onSearch={handleSearch} />
-    </div>
+      <CMain />
+      <CFooter />
+    </>
   );
 }
 

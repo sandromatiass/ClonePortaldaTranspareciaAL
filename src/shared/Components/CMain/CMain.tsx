@@ -1,86 +1,72 @@
-import React, { useState, ChangeEvent } from "react";
-import ServidoresAtivos from "../../Data/ServidoresAtivos/ServidoresAtivos";
-import ServidoresInativos from "../../Data/ServidoresInativos/ServidoresInativos";
+import { useState } from 'react';
+import ServidoresAtivos from '../../Data/ServidoresAtivos/ServidoresAtivos';
+import ServidoresInativos from '../../Data/ServidoresInativos/ServidoresInativos';
 
-interface CMainProps {
-  onSearch: (query: string, mostrarAtivos: boolean, mostrarInativos: boolean, limit: number) => void;
+const servidoresAtivos = require('../../Data/ServidoresAtivos/ServidoresAtivos.json');
+const servidoresInativos = require('../../Data/ServidoresInativos/ServidoresInativos.json');
+
+import "./styles.css"
+
+interface ServidoresData {
+  servidoresAtivos: any[];
+  servidoresInativos: any[];
 }
 
-const CMain: React.FC<CMainProps> = ({ onSearch }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [mostrarAtivos, setMostrarAtivos] = useState<boolean>(true);
-  const [mostrarInativos, setMostrarInativos] = useState<boolean>(true);
-  const [limit, setLimit] = useState<number>(10);
+const CMain = () => {
+  const [mostrarAtivos, setMostrarAtivos] = useState<boolean>(false);
+  const [mostrarInativos, setMostrarInativos] = useState<boolean>(false);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearch = () => {
-    onSearch(searchQuery, mostrarAtivos, mostrarInativos, limit);
-  };
+  const ultimosInativos = servidoresInativos.servidoresInativos.slice(-12);
+  const primeirosAtivos = servidoresAtivos.servidoresAtivos.slice(0, 12);
 
   const handleCheckboxChange = (tipo: 'ativos' | 'inativos') => {
     if (tipo === 'ativos') {
       setMostrarAtivos(!mostrarAtivos);
+      setMostrarInativos(false);
     } else {
       setMostrarInativos(!mostrarInativos);
+      setMostrarAtivos(false);
     }
-  };
-
-  const handleLimitChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newLimit = parseInt(event.target.value, 10);
-    setLimit(newLimit);
   };
 
   return (
     <div>
-      <p>Consultar dados dos servidores ativos e inativos</p>
-      <input 
-        type="text" 
-        placeholder="Pesquisar..." 
-        value={searchQuery}
-        onChange={handleChange}
-      />
+      <div className='checkBox'>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={mostrarAtivos}
+              onChange={() => handleCheckboxChange('ativos')}
+            />
+            Mostrar Ativos
+          </label>
+        </div>
 
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={mostrarAtivos}
-            onChange={() => handleCheckboxChange('ativos')}
-          />
-          Mostrar Ativos
-        </label>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={mostrarInativos}
+              onChange={() => handleCheckboxChange('inativos')}
+            />
+            Mostrar Inativos
+          </label>
+        </div>
       </div>
+     
+      <p className='fraseOrientadora'>
+        {mostrarAtivos && mostrarInativos
+          ? 'Você está verificando a lista de servidores ativos e inativos'
+          : mostrarAtivos
+          ? 'Você está verificando a lista de servidores ativos'
+          : mostrarInativos
+          ? 'Você está verificando a lista de servidores inativos'
+          : 'Por favor, selecione acima para verificar os dados dos servidores.'}
+      </p>
 
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={mostrarInativos}
-            onChange={() => handleCheckboxChange('inativos')}
-          />
-          Mostrar Inativos
-        </label>
-      </div>
-
-      <div>
-        <label>
-          Exibir:
-          <input
-            type="number"
-            value={limit}
-            onChange={handleLimitChange}
-          />
-          servidores por vez
-        </label>
-      </div>
-
-      <button onClick={handleSearch}>Pesquisar</button>
-
-      {mostrarAtivos && <ServidoresAtivos searchQuery={searchQuery} limit={limit} />}
-      {mostrarInativos && <ServidoresInativos searchQuery={searchQuery} limit={limit} />}
+      {mostrarAtivos && <ServidoresAtivos servidoresAtivos={primeirosAtivos} />}
+      {mostrarInativos && <ServidoresInativos servidoresInativos={ultimosInativos} />}
     </div>
   );
 };

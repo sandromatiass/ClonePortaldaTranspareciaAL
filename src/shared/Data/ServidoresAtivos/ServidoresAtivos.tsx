@@ -1,70 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import axios, { AxiosError } from 'axios';
-
-interface Server {
-  id: number;
+interface ServidorAtivo {
+  horas_extras: string;
+  codigo_orgao: string;
   nome: string;
-  salario: number;
+  ano: number;
+  cpf: string;
+  funcionario_id: number;
+  mes: number;
+  descricao_orgao: string;
+  total: string;
+  id: number;
+  numero_ordem: number;
 }
 
 interface ServidoresAtivosProps {
-  searchQuery: string;
-  limit: number;
+  servidoresAtivos: ServidorAtivo[];
 }
 
-const ServidoresAtivos: React.FC<ServidoresAtivosProps> = ({ searchQuery, limit }) => {
-  const [servidoresAtivos, setServidoresAtivos] = useState<Server[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/pessoal/json-servidores/', {
-          params: {
-            ano: 2015,
-            mes: 9,
-            limit,
-            status: 'ativo',
-            nome: searchQuery,
-          },
-          headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Authorization': 'Bearer SeuTokenDeAutenticacao',
-            'Outro-Header': 'Valor-Outro-Header',
-          },
-        });
-
-        setServidoresAtivos(response.data);
-        setError(null);
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const axiosError = error as AxiosError;
-          console.error('Erro na requisição:', axiosError);
-          setError(axiosError.message);
-        } else {
-          console.error('Erro na requisição:', error);
-          setError('Erro desconhecido');
-        }
-      }
-    };
-
-    fetchData();
-  }, [searchQuery, limit]);
-
-  if (error) {
-    return <div>Erro na requisição: {error}</div>;
-  }
-
+const ServidoresAtivos = ({ servidoresAtivos }: ServidoresAtivosProps) => {
   return (
     <div>
-      <h2>Servidores Ativos</h2>
-      <ul>
-        {servidoresAtivos.map((server) => (
-          <li key={server.id}>
-            {server.nome} - Salário: {server.salario}
-          </li>
-        ))}
-      </ul>
+      <h2>Listagem de Servidores Ativos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Órgão</th>
+            <th>Total Líquido (R$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {servidoresAtivos.map((servidor) => (
+            <tr key={servidor.id}>
+              <td>{servidor.cpf}</td>
+              <td>{servidor.nome}</td>
+              <td>{servidor.descricao_orgao}</td>
+              <td>{servidor.total}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
